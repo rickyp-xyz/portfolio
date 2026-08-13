@@ -1,0 +1,404 @@
+/* =========================================
+OVERALL SYSTEM
+========================================= */
+
+.bg {
+    position: fixed;
+    width: clamp(600px, 90vw, 1200px);
+    height: clamp(500px, 80vh, 900px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none
+}
+
+/* =========================================
+BLOBS
+========================================= */
+
+.blob {
+    position: absolute;
+    aspect-ratio: 1;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    pointer-events: none
+}
+
+.blob::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    filter: blur(var(--blob-blur));
+    transform: translateZ(0);
+
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+/* =========================================
+BLOB 1
+========================================= */
+
+.blob-1 {
+    width: clamp(350px, 50vw, 700px);
+    top: 5%;
+    left: 5%;
+    opacity: 0.75;
+
+    animation: blob1Movement 26s ease-in-out infinite;
+}
+
+.blob-1::before {
+    background: linear-gradient(
+        135deg,
+        var(--color-red) 0%,
+        var(--color-red) 35%,
+        var(--color-red-dark) 60%,
+        var(--color-purple) 100%
+    );
+
+    animation-name: blob1Shape;
+    animation-duration: 19s;
+}
+
+/* =========================================
+BLOB 2
+========================================= */
+
+.blob-2 {
+    width: clamp(300px, 42vw, 600px);
+    top: 5%;
+    right: -5%;
+    opacity: 0.65;
+
+    animation: blob2Movement 31s ease-in-out infinite;
+}
+
+.blob-2::before {
+    background: linear-gradient(
+        135deg,
+        var(--color-purple) 0%,
+        var(--color-red-purple) 40%,
+        var(--color-red-dark) 70%,
+        var(--color-red) 100%
+    );
+
+    animation-name: blob2Shape;
+    animation-duration: 23s;
+}
+
+/* =========================================
+BLOB 3
+========================================= */
+
+.blob-3 {
+    width: clamp(320px, 45vw, 650px);
+    bottom: 0%;
+    left: 25%;
+    opacity: 0.60;
+
+    animation: blob3Movement 34s ease-in-out infinite;
+}
+
+.blob-3::before {
+    background: linear-gradient(
+        135deg,
+        var(--color-red-dark) 0%,
+        var(--color-red-purple) 40%,
+        var(--color-purple) 75%,
+        var(--color-red) 100%
+    );
+
+    animation-name: blob3Shape;
+    animation-duration: 27s;
+}
+
+/* =========================================
+BLOB 1 MOVEMENT
+========================================= */
+
+@keyframes blob1Movement {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    20% {
+        transform: translate3d(100px, 50px, 0) scale(1.05);
+    }
+
+    40% {
+        transform: translate3d(220px, 150px, 0) scale(0.95);
+    }
+
+    60% {
+        transform: translate3d(100px, 250px, 0) scale(1.08);
+    }
+
+    80% {
+        transform: translate3d(-80px, 130px, 0) scale(0.98);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+/* =========================================
+BLOB 2 MOVEMENT
+========================================= */
+
+@keyframes blob2Movement {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    20% {
+        transform: translate3d(-100px, 100px, 0) scale(0.95);
+    }
+
+    40% {
+        transform: translate3d(-220px, 180px, 0) scale(1.08);
+    }
+
+    60% {
+        transform: translate3d(-150px, 300px, 0) scale(0.96);
+    }
+
+    80% {
+        transform: translate3d(0, 180px, 0) scale(1.05);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+/* =========================================
+BLOB 3 MOVEMENT
+========================================= */
+
+@keyframes blob3Movement {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    20% {
+        transform: translate3d(-150px, -100px, 0) scale(1.06);
+    }
+
+    40% {
+        transform: translate3d(100px, -220px, 0) scale(0.94);
+    }
+
+    60% {
+        transform: translate3d(250px, -100px, 0) scale(1.08);
+    }
+
+    80% {
+        transform: translate3d(100px, 50px, 0) scale(0.96);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+/* =========================================
+BLOB 1 SHAPE
+========================================= */
+
+@keyframes blob1Shape {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+    }
+
+    25% {
+        border-radius: 65% 35% 40% 60% / 55% 70% 30% 45%;
+    }
+
+    50% {
+        border-radius: 40% 60% 25% 75% / 70% 35% 65% 30%;
+    }
+
+    75% {
+        border-radius: 75% 25% 60% 40% / 35% 65% 40% 60%;
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 40% 70% 70%;
+    }
+}
+
+/* =========================================
+BLOB 2 SHAPE
+========================================= */
+
+@keyframes blob2Shape {
+    0% {
+        border-radius: 70% 30% 40% 60% / 45% 55% 65% 35%;
+    }
+
+    25% {
+        border-radius: 35% 65% 60% 40% / 70% 35% 45% 55%;
+    }
+
+    50% {
+        border-radius: 55% 45% 30% 70% / 30% 65% 35% 70%;
+    }
+
+    75% {
+        border-radius: 25% 75% 55% 45% / 55% 40% 60% 45%;
+    }
+
+    100% {
+        border-radius: 70% 30% 40% 60% / 45% 55% 65% 35%;
+    }
+}
+
+/* =========================================
+BLOB 3 SHAPE
+========================================= */
+
+@keyframes blob3Shape {
+    0% {
+        border-radius: 45% 55% 70% 30% / 60% 35% 65% 40%;
+    }
+
+    25% {
+        border-radius: 70% 30% 45% 55% / 35% 65% 40% 60%;
+    }
+
+    50% {
+        border-radius: 30% 70% 60% 40% / 55% 45% 70% 30%;
+    }
+
+    75% {
+        border-radius: 60% 40% 30% 70% / 40% 70% 30% 60%;
+    }
+
+    100% {
+        border-radius: 45% 55% 70% 30% / 60% 35% 65% 40%;
+    }
+}
+
+/* =========================================
+SMALL TABLET / NARROW DESKTOP SCREEN
+========================================= */
+
+@media (min-width: 768px) and (max-width: 1100px) {
+
+    .orbital-system {
+        width: 90vw;
+        height: 75vh;
+    }
+
+    .blob-1 {
+        width: 48vw;
+        top: 10%;
+        left: 10%;
+    }
+
+    .blob-2 {
+        width: 42vw;
+        top: 8%;
+        right: 5%;
+    }
+
+    .blob-3 {
+        width: 45vw;
+        bottom: 5%;
+        left: 28%;
+    }
+
+    @keyframes blob1Movement {
+        0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        20% {
+        transform: translate3d(50px, 30px, 0) scale(1.03);
+        }
+
+        40% {
+        transform: translate3d(100px, 70px, 0) scale(0.98);
+        }
+
+        60% {
+        transform: translate3d(50px, 100px, 0) scale(1.05);
+        }
+
+        80% {
+        transform: translate3d(-30px, 60px, 0) scale(1);
+        }
+
+        100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+
+    @keyframes blob2Movement {
+        0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        20% {
+        transform: translate3d(-50px, 40px, 0) scale(0.98);
+        }
+
+        40% {
+        transform: translate3d(-100px, 80px, 0) scale(1.05);
+        }
+
+        60% {
+        transform: translate3d(-70px, 120px, 0) scale(1);
+        }
+
+        80% {
+        transform: translate3d(-20px, 70px, 0) scale(1.03);
+        }
+
+        100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+
+    @keyframes blob3Movement {
+        0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        20% {
+        transform: translate3d(-60px, -40px, 0) scale(1.04);
+        }
+
+        40% {
+        transform: translate3d(50px, -80px, 0) scale(0.97);
+        }
+
+        60% {
+        transform: translate3d(100px, -40px, 0) scale(1.05);
+        }
+
+        80% {
+        transform: translate3d(40px, 20px, 0) scale(0.98);
+        }
+
+        100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+}
+
+/* =========================================
+PHONE SCREEN
+========================================= */
+
+@media (max-width: 767px) {
+    .orbital-system {
+        display: none;
+    }
+}
